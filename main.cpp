@@ -4,10 +4,9 @@ class LibreTranslateAPI {
   std::string DEFAULT_URL = "https://translate.argosopentech.com/";
 
   public:
-  std::string translate(std::string q, std::string source, std::string target){
-    return "Hello Mars";
-  }
-
+    std::string translate(std::string q, std::string source, std::string target){
+	return "Hello Mars";
+    }
 };
 
 int main(){
