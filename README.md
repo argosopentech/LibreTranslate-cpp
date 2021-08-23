@@ -1,2 +1,2 @@
 # LibreTranslate-cpp
-LibreTranslate C++ bindings
+[LibreTranslate](https://libretranslate.com) C++ bindings.
