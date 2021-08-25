@@ -1,5 +1,5 @@
 #include <iostream>
-#include <boost/asio.hpp>
+#include <curl/curl.h>
 
 class LibreTranslateAPI {
   std::string DEFAULT_URL = "https://translate.argosopentech.com/";

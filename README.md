@@ -2,9 +2,10 @@
 [LibreTranslate](https://libretranslate.com) C++ bindings.
 
 ## Dependencies
-[Boost Asio](https://www.boost.org/doc/libs/1_77_0/doc/html/boost_asio.html)
+[libcurl](https://curl.se/libcurl/c/http-post.html)
 ```
-sudo apt-get install -y libasio-dev
+sudo apt-get install -y libcurl4-openssl-dev
+curl-config --libs
 ```
 
 ## Building
