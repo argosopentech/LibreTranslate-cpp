@@ -2,6 +2,7 @@
 #include <vector>
 
 #include <curl/curl.h>
+#include "deps/json.hpp"
 
 class LibreTranslateAPI {
   std::string DEFAULT_URL = "https://translate.argosopentech.com/";
@@ -62,11 +63,20 @@ std::string curl_post(std::string url, std::vector<std::string> headers, std::st
   return to_return;
 }
 
+using json = nlohmann::json;
+
 int main(){
+  json req;
+  req["q"] = "Hello World";
+  req["source"] = "en";
+  req["target"] = "es";
+  std::string post_fields = req.dump(2);
+
   std::string url = "https://translate.argosopentech.com/translate";
-  std::string post_fields = "{\"q\":\"hello\",\"source\":\"en\",\"target\":\"es\"}";
+
   std::vector<std::string> headers;
   headers.push_back("Content-Type: application/json");
+
   std::string s = curl_post(url, headers, post_fields);
 
   std::cout << s << std::endl;
