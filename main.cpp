@@ -10,7 +10,15 @@ class LibreTranslateAPI {
     }
 };
 
+size_t curl_writeback_fun(void* contents, size_t size, size_t nmemb, std::string *s) {
+  size_t len = size * nmemb;
+  s->append((char*)contents, len);
+  return len;
+}
+
 int main(){
+  std::string s;
+
   // Based on https://curl.se/libcurl/c/http-post.html
   // Daniel Stenberg, <daniel@haxx.se>, et al.
   CURL *curl;
@@ -30,6 +38,9 @@ int main(){
     headers = curl_slist_append(headers, "Content-Type: application/json");
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curl_writeback_fun);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &s);
+
     res = curl_easy_perform(curl);
 
     if(res != CURLE_OK)
@@ -41,5 +52,7 @@ int main(){
     curl_easy_cleanup(curl);
   }
   curl_global_cleanup();
+
+  std::cout << s << std::endl;
   return 0;
 }
