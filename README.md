@@ -8,6 +8,10 @@ sudo apt-get install -y libcurl4-openssl-dev
 curl-config --libs
 ```
 
+[nlohmann/json](https://github.com/nlohmann/json):
+
+Single file included in source
+
 ## Building
 ```
 make
