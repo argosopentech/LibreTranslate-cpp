@@ -65,15 +65,15 @@ std::string curl_post(std::string url, std::vector<std::string> headers, std::st
   return to_return;
 }
 
-std::string json_post(std::string url, json data){
+json json_post(std::string url, json data){
   std::vector<std::string> headers;
   headers.push_back("Content-Type: application/json");
 
-  std::string serialized_json = data.dump(2);
+  std::string serialized_json = data.dump();
   
   std::string res = curl_post(url, headers, serialized_json);
 
-  return res;
+  return json::parse(res);
 }
 
 int main(){
@@ -84,8 +84,8 @@ int main(){
 
   std::string url = "https://translate.argosopentech.com/translate";
 
-  auto s = json_post(url, req);
+  json res = json_post(url, req);
 
-  std::cout << s << std::endl;
+  std::cout << res << std::endl;
   return 0;
 }
