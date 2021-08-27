@@ -1,5 +1,5 @@
 # LibreTranslate-cpp
-[LibreTranslate](https://libretranslate.com) C++ bindings.
+[LibreTranslate](https://libretranslate.com) C++17 bindings.
 
 ## Dependencies
 [libcurl](https://curl.se/libcurl/c/http-post.html):

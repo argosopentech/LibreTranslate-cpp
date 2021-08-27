@@ -1,6 +1,6 @@
 CC = g++
 
-CXXFLAGS = -lcurl
+CXXFLAGS = -std=c++17 -lcurl
 
 TARGET = libretranslate
 
