@@ -73,23 +73,46 @@ class LibreTranslateAPI {
     std::string base_url;
 
   public:
-    LibreTranslateAPI(std::string base_url="https://translate.argosopentech.com/translate");
+    LibreTranslateAPI(std::string base_url="https://translate.argosopentech.com/");
   
     json translate(std::string q, std::string source, std::string target);
+    json languages();
+    json detect(std::string q);
 };
 
 LibreTranslateAPI::LibreTranslateAPI(std::string base_url)
   : base_url(base_url){}
 
 json LibreTranslateAPI::translate(std::string q, std::string source, std::string target){
+  std::string url = base_url + "translate";
+  
   json req;
   req["q"] = q;
   req["source"] = source;
   req["target"] = target;
 
-  json res = json_post("https://translate.argosopentech.com/translate", req);
+  json res = json_post(url, req);
 
   return res;
 }
 
+json LibreTranslateAPI::languages(){
+  std::string url = base_url + "languages";
+  
+  json req;
 
+  json res = json_post(url, req);
+
+  return res;
+}
+
+json LibreTranslateAPI::detect(std::string q){
+  std::string url = base_url + "detect";
+  
+  json req;
+  req["q"] = q;
+
+  json res = json_post(url, req);
+
+  return res;
+}
